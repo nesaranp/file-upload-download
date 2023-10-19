@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload File</title>
+    <script>
+      function uploadZIP() {
+          var input = document.getElementById('zipInput');
+  
+          if (input.files.length === 0) {
+              alert('Please the file to upload.');
+              return;
+          }
+  
+          var file = input.files[0];
+          var formData = new FormData();
+          formData.append('uploadedFile', file);
+  
+          // You can use the Fetch API to send the file to the server
+          fetch('/uploadfile', {
+              method: 'POST',
+              body: formData,
+          })
+          .then(response => response.text())
+          .then(data => {
+              alert(data);
+              input.value = "";
+          })
+          .catch(error => {
+              alert('File upload failed');
+              console.error('File upload failed:', error);
+          });
+      }
+  </script>  
+</head>
+<body>
+  <div style="display: flex; align-items: center; justify-content: space-between;">
+    <h1>Upload file</h1>
+    <a href="/public">View Files</a>
+  </div>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="zipInput" name="zipInput">
+        <button type="button" onclick="uploadZIP()">Upload File</button>
+    </form>
+</body>
+</html>
