@@ -51,9 +51,11 @@ index.js: The main server file.
 uploads/index.html: Upload file HTML page.
 public/: You can place any static assets or files you want to serve to users here and uploaded files are stored.
 
+```bash
 file-upload-download/
 ├── index.js
 ├── uploads/index.html
 ├── public/
 ├── README.md
 └── package.json
+```
